@@ -1,0 +1,185 @@
+:root {
+  --clr-primary: rgb(55, 110, 200);
+  --clr-light: rgb(255, 255, 255);
+  --clr-dark: rgb(26, 17, 17);
+  --clr-warning: rgb(180, 30, 40);
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui;
+  font-weight: 400;
+  font-size: 1.5rem;
+  background-color: var(--clr-primary);
+  color: var(--clr-light);
+  display: grid;
+  grid:
+    "header header header header" auto ". list active ." / 1fr minmax(
+      100px,
+      300px
+    )
+    minmax(250px, 500px) 1fr;
+}
+.title {
+  grid-area: header;
+  color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: calc(7vw + 2rem);
+  font-weight: 800;
+  margin: -3rem 0 0.2rem;
+  letter-spacing: 2px;
+}
+.all-tasks {
+  grid-area: list;
+  .task-list {
+    line-height: 1.9rem;
+    list-style-type: circle;
+    font-size: 1.2rem;
+    .active-list {
+      font-weight: 800;
+    }
+    .list-name {
+      cursor: pointer;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+form {
+  display: flex;
+
+  .new {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    border-bottom: 1px solid currentColor;
+    outline: none;
+    transition: border-bottom 150ms ease-in;
+    font-size: inherit;
+    order: 2;
+    &:focus {
+      border-bottom: 2px solid currentColor;
+      &::placeholder {
+        opacity: 0.2;
+      }
+    }
+  }
+  .btn {
+    background-color: transparent;
+    color: inherit;
+    border: none;
+    font-size: inherit;
+    font-weight: 900;
+    cursor: pointer;
+    transition: opacity 150ms ease-in;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  .new.list {
+    font-size: 1.1rem;
+  }
+}
+.todo-header {
+  color: rgb(76, 70, 70);
+  background-color: rgb(159, 159, 159);
+  margin: 0;
+  padding: var(--spacer);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .task-count {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .list-title {
+    margin: 0 1rem 0 0;
+  }
+}
+.todo-body {
+  padding: var(--spacer);
+}
+.todo-list {
+  --spacer: 1.5rem;
+
+  grid-area: active;
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+}
+[type="checkbox"] {
+  opacity: 0;
+  position: absolute;
+}
+.custom-checkbox {
+  --size: 0.85rem;
+  cursor: pointer;
+  display: inline-block;
+  width: var(--size);
+  height: var(--size);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-right: var(--size);
+  margin-top: 8px;
+}
+.task label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: var(--size);
+  position: relative;
+  margin-bottom: 2rem;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -1rem;
+    background-color: currentColor;
+    height: 1px;
+    opacity: 0.1;
+  }
+  &::before {
+    content: "";
+    left: 1.5rem;
+    position: absolute;
+    height: 3px;
+    right: 0;
+    bottom: 10px;
+    background-color: currentColor;
+    z-index: 333;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: all 200ms ease-in-out;
+  }
+
+  &:hover .custom-checkbox {
+    transform: scale(1.4);
+    color: var(--clr-primary);
+  }
+}
+[type="checkbox"]:focus + label .custom-checkbox {
+  transform: scale(1.4);
+  color: var(--clr-primary);
+}
+[type="checkbox"]:checked + label .custom-checkbox {
+  background-color: var(--clr-primary);
+  border-color: var(--clr-primary);
+  box-shadow: inset 0 0 0 1px white;
+}
+[type="checkbox"]:checked + label {
+  opacity: 0.7;
+}
+[type="checkbox"]:checked + label::before {
+  transform: scaleX(1);
+  transform-origin: right;
+}
