@@ -71,6 +71,7 @@ form {
       }
     }
   }
+
   .btn {
     background-color: transparent;
     color: inherit;
@@ -86,6 +87,9 @@ form {
   .new.list {
     font-size: 1.1rem;
   }
+}
+button.btn.task {
+  color: var(--clr-primary);
 }
 .todo-header {
   color: rgb(76, 70, 70);
@@ -182,4 +186,23 @@ form {
 [type="checkbox"]:checked + label::before {
   transform: scaleX(1);
   transform-origin: right;
+}
+.delete-stuff .btn {
+  border: none;
+  background-color: inherit;
+  font-size: 1.2rem;
+  color: var(--clr-light);
+  opacity: 0.6;
+  &:hover {
+    opacity: 1;
+    color: red;
+  }
+}
+.delete-stuff {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  bottom: -60px;
 }
