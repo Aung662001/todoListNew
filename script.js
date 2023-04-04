@@ -145,9 +145,8 @@ deleteListButton.addEventListener("click", (e) => {
 });
 clearCompleteTasks.addEventListener("click", () => {
   const selectedList = lists.find((list) => list.id === selectedListId);
-  console.log(selectedList.tasks);
-  while (selectedList.tasks.length > 0) {
-    selectedList.tasks.pop();
-  }
+  selectedList.tasks.filter((task) => {
+    !task.complete;
+  });
   saveAndRender();
 });
