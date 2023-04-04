@@ -121,8 +121,8 @@ button.btn.task {
 //     opacity: 0.7;
 //   }
 // }
-// .tasks:nth-child(1) {
-//   background-color: beige;
+// .task:nth-child(even) {
+//   background-color: rgb(178, 178, 66);
 // }
 .todo-body {
   padding: var(--spacer);
@@ -150,6 +150,7 @@ button.btn.task {
   cursor: pointer;
   margin-right: var(--size);
   margin-top: 8px;
+  margin-left: 1rem;
 }
 .tasks {
   overflow: auto;

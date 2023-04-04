@@ -136,6 +136,7 @@ button.btn.task {
   cursor: pointer;
   margin-right: var(--size);
   margin-top: 8px;
+  margin-left: 1rem;
 }
 
 .tasks {
