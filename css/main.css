@@ -113,6 +113,7 @@ button.btn.task {
 }
 
 .todo-list {
+  position: relative;
   --spacer: 1.5rem;
   grid-area: active;
   background-color: var(--clr-light);
@@ -137,29 +138,30 @@ button.btn.task {
   margin-top: 8px;
 }
 
+.tasks {
+  overflow: auto;
+  margin-bottom: 2rem;
+  max-height: 300px;
+}
+
+.task {
+  padding-top: 1rem;
+  border-bottom: 2px solid var(--clr-primary);
+}
+
 .task label {
   display: inline-flex;
   align-items: center;
-  margin-right: var(--size);
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   transition: all 300ms ease-in-out;
   cursor: pointer;
-}
-.task label::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: -1rem;
-  background-color: currentColor;
-  height: 1px;
-  opacity: 0.1;
 }
 .task label::before {
   content: "";
   left: 1.5rem;
   position: absolute;
-  height: 3px;
+  height: 2px;
   right: 0;
   bottom: 10px;
   background-color: currentColor;
@@ -206,12 +208,13 @@ button.btn.task {
 }
 
 .delete-stuff {
+  position: absolute;
   display: flex;
   flex-direction: row;
-  position: relative;
   flex-wrap: nowrap;
   justify-content: space-evenly;
-  bottom: -60px;
+  bottom: -50px;
+  width: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */
